@@ -4,17 +4,8 @@ class Hellohomebrew < Formula
   url "https://github.com/calvinchengx/hellohomebrew/releases/download/v0.0.4/hello-0.0.4.tar.gz"
   sha256 "faf521b43fc66ed2c085107d25ee75fed3b922cfab7f77f24787861a81f49853"
 
-  # depends_on "cmake" => :build
-
   def install
-    # ENV.deparallelize  # if your formula fails when building in parallel
-    # Remove unrecognized options if warned by configure
-    system "./configure", "--disable-debug",
-                          "--disable-dependency-tracking",
-                          "--disable-silent-rules",
-                          "--prefix=#{prefix}"
-    # system "cmake", ".", *std_cmake_args
-    system "make", "install" # if this fails, try separate make/make install steps
+    bin.install "hello"
   end
 
   test do
